@@ -1,33 +1,8 @@
-# ─────────────────────────────────────────────────────────
-# Decap CMS configuration for the wedding invitation site.
-#
-# IMPORTANT — before this works you MUST:
-# 1. Replace "your-username/your-repo-name" below with your
-#    actual GitHub "username/repo" (e.g. malikMazhar/wedding-invite).
-# 2. Set up GitHub OAuth so Decap CMS can log you in. The
-#    easiest free way (even though the site itself stays on
-#    GitHub Pages) is to use Netlify purely as an OAuth proxy:
-#      a. Create a free account at https://app.netlify.com
-#      b. "Add new site" → "Import an existing project" → pick
-#         this same GitHub repo (you can disable/ignore the
-#         actual build, you only need it for the OAuth step).
-#      c. In that Netlify site: Site settings → Identity →
-#         Enable Identity, then Services → Git Gateway → Enable.
-#      d. Site settings → Access & security → OAuth →
-#         "Install provider" → GitHub, and follow the prompts
-#         (Netlify will create the GitHub OAuth App for you).
-#    That's it — the base_url below already points at Netlify's
-#    shared auth proxy, so no extra config is needed here.
-# 3. Visit https://<your-username>.github.io/<your-repo>/admin/
-#    and log in with your GitHub account.
-# ─────────────────────────────────────────────────────────
-
 backend:
-  name: github
-  repo: malikopyt302-sudo/Wedding-card
+  name: git-gateway
   branch: main
-  base_url: https://wedding-card00.netlify.app
-  auth_endpoint: auth
+  identity_url: https://wedding-card00.netlify.app/.netlify/identity
+  gateway_url: https://wedding-card00.netlify.app/.netlify/git
 
 media_folder: "assets/images"
 public_folder: "assets/images"
