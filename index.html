@@ -722,11 +722,11 @@ footer{background:#3a1018;padding:28px 24px;text-align:center;}
   <h2 class="section-title fade-up" style="transition-delay:.1s">Venue</h2>
   <div class="divider fade-up" style="transition-delay:.2s"><div class="div-line"></div><span class="div-dot">📍</span><div class="div-line"></div></div>
   <p style="font-size:1rem;font-style:italic;color:var(--text-light);max-width:300px;margin:0 auto;" class="fade-up">Dera Ghazi Khan<br/>Punjab, Pakistan</p>
-  <div class="map-placeholder fade-up" style="transition-delay:.3s" onclick="window.open(\'https://maps.google.com/?q=Dera+Ghazi+Khan+Pakistan\',\'_blank\')">
+  <div id="map-placeholder" class="map-placeholder fade-up" style="transition-delay:.3s" onclick="window.open(window.SITE_MAP_LINK||'https://maps.google.com/?q=Dera+Ghazi+Khan+Pakistan','_blank')">
     <div class="map-pin-icon">🗺️</div>
     <div class="map-text-lbl">Tap to open in Google Maps</div>
   </div>
-  <a href="https://maps.google.com/?q=Dera+Ghazi+Khan+Pakistan" target="_blank" class="directions-btn fade-up" style="transition-delay:.4s">📍 Get Directions</a>
+  <a id="directions-link" href="https://maps.google.com/?q=Dera+Ghazi+Khan+Pakistan" target="_blank" class="directions-btn fade-up" style="transition-delay:.4s">📍 Get Directions</a>
 </section>
 
 <section id="rsvp">
@@ -809,6 +809,11 @@ function applySiteData(d){
       const msg=a.getAttribute('data-whatsapp-msg')||'';
       a.href='https://wa.me/'+d.whatsapp_number+(msg?('?text='+encodeURIComponent(msg)):'');
     });
+  }
+  if(d.map_link){
+    window.SITE_MAP_LINK=d.map_link;
+    const dirLink=document.getElementById('directions-link');
+    if(dirLink) dirLink.href=d.map_link;
   }
 }
 
