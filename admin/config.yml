@@ -20,6 +20,7 @@ collections:
           - { label: "Wedding Date", name: "wedding_date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
           - { label: "Venue (full, e.g. 'City, Country')", name: "venue", widget: "string" }
           - { label: "Venue (short, city only)", name: "venue_short", widget: "string" }
+          - { label: "Google Maps Link (Google Maps app kholo, apni exact venue location share karo, wahi link yahan paste karo)", name: "map_link", widget: "string", required: false }
           - { label: "Groom's Family Location", name: "groom_family_location", widget: "string" }
           - { label: "Bride's Family Location", name: "bride_family_location", widget: "string" }
           - { label: "WhatsApp Number (international, no + or spaces, e.g. 923001234567)", name: "whatsapp_number", widget: "string" }
