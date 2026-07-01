@@ -1,0 +1,53 @@
+# ─────────────────────────────────────────────────────────
+# Decap CMS configuration for the wedding invitation site.
+#
+# IMPORTANT — before this works you MUST:
+# 1. Replace "your-username/your-repo-name" below with your
+#    actual GitHub "username/repo" (e.g. malikMazhar/wedding-invite).
+# 2. Set up GitHub OAuth so Decap CMS can log you in. The
+#    easiest free way (even though the site itself stays on
+#    GitHub Pages) is to use Netlify purely as an OAuth proxy:
+#      a. Create a free account at https://app.netlify.com
+#      b. "Add new site" → "Import an existing project" → pick
+#         this same GitHub repo (you can disable/ignore the
+#         actual build, you only need it for the OAuth step).
+#      c. In that Netlify site: Site settings → Identity →
+#         Enable Identity, then Services → Git Gateway → Enable.
+#      d. Site settings → Access & security → OAuth →
+#         "Install provider" → GitHub, and follow the prompts
+#         (Netlify will create the GitHub OAuth App for you).
+#    That's it — the base_url below already points at Netlify's
+#    shared auth proxy, so no extra config is needed here.
+# 3. Visit https://<your-username>.github.io/<your-repo>/admin/
+#    and log in with your GitHub account.
+# ─────────────────────────────────────────────────────────
+
+backend:
+  name: github
+  repo: malikopyt302-sudo/Wedding-card
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "assets/images"
+public_folder: "assets/images"
+
+collections:
+  - name: "wedding"
+    label: "Wedding Details"
+    files:
+      - name: "wedding_data"
+        label: "Couple, Date & Venue"
+        file: "content/wedding-data.json"
+        fields:
+          - { label: "Groom's Name", name: "groom_name", widget: "string" }
+          - { label: "Bride's Name", name: "bride_name", widget: "string" }
+          - { label: "Wedding Date", name: "wedding_date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+          - { label: "Venue (full, e.g. 'City, Country')", name: "venue", widget: "string" }
+          - { label: "Venue (short, city only)", name: "venue_short", widget: "string" }
+          - { label: "Groom's Family Location", name: "groom_family_location", widget: "string" }
+          - { label: "Bride's Family Location", name: "bride_family_location", widget: "string" }
+          - { label: "WhatsApp Number (international, no + or spaces, e.g. 923001234567)", name: "whatsapp_number", widget: "string" }
+          - { label: "Phone Number (as displayed on the page)", name: "phone_display", widget: "string" }
+          - { label: "Couple Photo", name: "couple_photo", widget: "image" }
+          - { label: "Envelope Cover Image", name: "envelope_bg", widget: "image" }
